@@ -23,7 +23,7 @@ import java.util.List;
  * 自定义竖直滑动选择器
  * 参考：https://blog.csdn.net/angrysword/article/details/79837696
  */
-public class WheelView extends View {
+public class WheelViewSingle extends View {
     private String TAG = LogTagConfig.VIEW + "WheelView";
 
     private List<WheelViewItem> mItemList;
@@ -38,8 +38,6 @@ public class WheelView extends View {
     private int halfItemNumber = itemNumber / 2;
 
     private boolean resetDefItemAfterLoseFocus = true;
-    private boolean hasFocus = false;
-
     // paint
     private TextPaint selectedTextPaint;
     private TextPaint normalTextPaint;
@@ -50,17 +48,17 @@ public class WheelView extends View {
     private WheelViewHandler mWheelViewHandler;
     private OnWheelViewListener mWheelViewListener;
 
-    public WheelView(Context context) {
+    public WheelViewSingle(Context context) {
         super(context);
         initView(context);
     }
 
-    public WheelView(Context context, AttributeSet attrs) {
+    public WheelViewSingle(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public WheelView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WheelViewSingle(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
@@ -81,14 +79,45 @@ public class WheelView extends View {
         selectedFocusLinePaint.setColor(Color.YELLOW);
 
         mWheelViewHandler = new WheelViewHandler(this);
+
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mWheelViewListener != null) {
+                    mWheelViewListener.onClick(getItem(mSelectedItemIndex), mSelectedItemIndex);
+                }
+            }
+        });
+
+        setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                doInvalidateWheelView(false);
+
+                if (!hasFocus && resetDefItemAfterLoseFocus) {
+                    mSelectedItemIndex = mDefItemIndex;
+                }
+                if (mWheelViewListener != null) {
+                    mWheelViewListener.onFocusChange(hasFocus);
+                }
+            }
+        });
     }
 
     public void setOnWheelViewListener(OnWheelViewListener listener) {
         mWheelViewListener = listener;
     }
 
+    public void setResetDefItemAfterLoseFocus(boolean reset) {
+        this.resetDefItemAfterLoseFocus = reset;
+    }
+
     public void setDefItemIndex(int index) {
         mDefItemIndex = index;
+    }
+
+    public void setPreTag(String preTag) {
+        TAG = preTag + TAG;
     }
 
     @Override
@@ -98,6 +127,11 @@ public class WheelView extends View {
         viewWidth = getMeasuredWidth();
         viewHeight = getMeasuredHeight();
         itemHeight = viewHeight / itemNumber;
+    }
+
+
+    public void initWheelView(int itemHeight) {
+        this.itemHeight = itemHeight;
     }
 
     public void setWheelViewItemList(List<WheelViewItem> list, int selectedItemIndex) {
@@ -142,8 +176,9 @@ public class WheelView extends View {
         }
     }
 
-    public void doOnKeyDown(int keyCode) {
-        MLog.i(TAG, "doOnKeyDown");
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_UP:
             case KeyEvent.KEYCODE_DPAD_DOWN:
@@ -151,37 +186,21 @@ public class WheelView extends View {
                 break;
 
             default:
-                break;
+                return super.onKeyDown(keyCode, event);
         }
+        return true;
     }
 
-    public void doOnKeyUp(int keyCode) {
-        MLog.i(TAG, "doOnKeyUp");
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_UP:
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 mWheelViewHandler.doRefresh();
-                break;
+                return true;
+
             default:
-                break;
-        }
-    }
-
-    public void doOnClick() {
-        if (mWheelViewListener != null) {
-            mWheelViewListener.onClick(getItem(mSelectedItemIndex), mSelectedItemIndex);
-        }
-    }
-
-    public void doOnFocusChange(boolean hasFocus) {
-        this.hasFocus = hasFocus;
-        doInvalidateWheelView(false);
-
-        if (!hasFocus && resetDefItemAfterLoseFocus) {
-            mSelectedItemIndex = mDefItemIndex;
-        }
-        if (mWheelViewListener != null) {
-            mWheelViewListener.onFocusChange(hasFocus);
+                return super.onKeyUp(keyCode, event);
         }
     }
 
@@ -195,11 +214,11 @@ public class WheelView extends View {
 
         private int lastKeyCode = -1;
 
-        private WeakReference<WheelView> mWheelViewWeakReference;
+        private WeakReference<WheelViewSingle> mWheelViewWeakReference;
 
         private int nextSelectedItemIndex = 0;
 
-        public WheelViewHandler(WheelView wheelView) {
+        public WheelViewHandler(WheelViewSingle wheelView) {
             mWheelViewWeakReference = new WeakReference<>(wheelView);
         }
 
@@ -233,7 +252,7 @@ public class WheelView extends View {
         @Override
         public void handleMessage(Message msg) {
 
-            WheelView wheelView = mWheelViewWeakReference.get();
+            WheelViewSingle wheelView = mWheelViewWeakReference.get();
             if (wheelView == null) {
                 return;
             }
@@ -271,21 +290,22 @@ public class WheelView extends View {
             return;
         }
 
+        boolean noFocus = !hasFocus();
         int selectIndex;
-        if (!hasFocus && resetDefItemAfterLoseFocus) {
+        if (noFocus && resetDefItemAfterLoseFocus) {
             selectIndex = mDefItemIndex;
         } else {
             selectIndex = mSelectedItemIndex;
         }
 
-        MLog.i(TAG, "onDraw  hasFocus :" + hasFocus + " , selectIndex :" + selectIndex);
+        MLog.i(TAG, "onDraw  noFocus :" + noFocus + " , selectIndex :" + selectIndex);
 
         // 1 绘制选中item的背景和线条——wheelView中间的选中框
         Paint linePaint;
-        if (hasFocus) {
-            linePaint = selectedFocusLinePaint;
-        } else {
+        if (noFocus) {
             linePaint = selectedNormalLinePaint;
+        } else {
+            linePaint = selectedFocusLinePaint;
         }
         canvas.drawLine(0, itemHeight * halfItemNumber - 2,
                 viewWidth, itemHeight * halfItemNumber, linePaint);
