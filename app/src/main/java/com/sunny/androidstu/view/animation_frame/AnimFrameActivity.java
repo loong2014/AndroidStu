@@ -1,13 +1,14 @@
-package com.sunny.androidstu;
+package com.sunny.androidstu.view.animation_frame;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.sunny.androidstu.view.animation_frame.LogoAnimView;
+import com.sunny.androidstu.LogTagConfig;
+import com.sunny.androidstu.R;
 import com.sunny.baselib.log.MLog;
 
-public class MainActivity extends Activity {
+public class AnimFrameActivity extends Activity {
     private static final String TAG = LogTagConfig.VIEW + "MainActivity";
 
 
