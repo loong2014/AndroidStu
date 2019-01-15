@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.sunny.androidstu.LogTagConfig;
+import com.sunny.baselib.log.MLogTag;
 import com.sunny.baselib.log.MLog;
 
 import java.lang.ref.WeakReference;
@@ -24,7 +24,7 @@ import java.util.List;
  * 参考：https://blog.csdn.net/angrysword/article/details/79837696
  */
 public class WheelViewSingle extends View {
-    private String TAG = LogTagConfig.VIEW + "WheelView";
+    private String TAG = MLogTag.VIEW + "WheelView";
 
     private List<WheelViewItem> mItemList;
     private int mSelectedItemIndex = 0;

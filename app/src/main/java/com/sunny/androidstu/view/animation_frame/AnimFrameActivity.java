@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.sunny.androidstu.LogTagConfig;
+import com.sunny.baselib.log.MLogTag;
 import com.sunny.androidstu.R;
 import com.sunny.baselib.log.MLog;
 
 public class AnimFrameActivity extends Activity {
-    private static final String TAG = LogTagConfig.VIEW + "MainActivity";
+    private static final String TAG = MLogTag.VIEW + "MainActivity";
 
 
     private LogoAnimView logoAnimView;

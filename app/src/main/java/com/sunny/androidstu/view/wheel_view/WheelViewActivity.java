@@ -6,16 +6,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
-import com.sunny.androidstu.LogTagConfig;
 import com.sunny.androidstu.R;
+import com.sunny.baselib.MStringUtils;
 import com.sunny.baselib.log.MLog;
+import com.sunny.baselib.log.MLogTag;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class WheelViewActivity extends Activity {
-    private static final String TAG = LogTagConfig.VIEW + "MainActivity";
+    private static final String TAG = MLogTag.VIEW + "MainActivity";
 
     private LinearLayout mWheelViewLayout;
 
@@ -109,31 +109,12 @@ public class WheelViewActivity extends Activity {
         for (int i = 0; i < 10; i++) {
             item = new WheelViewItem();
             item.setType(type);
-            item.setShowName(getRandomStr() + "-" + i);
+            item.setShowName(MStringUtils.getRandomStr() + "-" + i);
             list.add(item);
         }
 
         wheelView.setWheelViewItemList(list, defIndex);
     }
 
-    public static String getRandomStr() {
-        String base = "abcdefghijklmnopqrstuvwxyz0123456789";
-        int randomNum;
-        char randomChar;
-        Random random = new Random();
-        // StringBuffer类型的可以append增加字符
-        StringBuffer str = new StringBuffer();
-
-        int len = random.nextInt(10);
-        for (int i = 0; i < len; i++) {
-            // 可生成[0,n)之间的整数，获得随机位置
-            randomNum = random.nextInt(base.length());
-            // 获得随机位置对应的字符
-            randomChar = base.charAt(randomNum);
-            // 组成一个随机字符串
-            str.append(randomChar);
-        }
-        return str.toString();
-    }
 
 }
