@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -20,6 +21,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="进内存泄漏" />
+
+
+        <com.sunny.androidstu.view.round_angle.RoundAngleRelativeLayout
+            android:id="@+id/rl1"
+            android:layout_width="216dp"
+            android:layout_height="162dp"
+            android:layout_marginTop="50dp"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/def_item_bg" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:background="#a75144"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="10dp"
+                android:text="我的名称是什么" />
+
+        </com.sunny.androidstu.view.round_angle.RoundAngleRelativeLayout>
+
+        <com.sunny.androidstu.view.round_angle.RoundAngleRelativeLayout
+            android:id="@+id/rl2"
+            android:layout_width="216dp"
+            android:layout_height="162dp"
+            android:layout_marginTop="50dp"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/def_item_bg" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:background="#a75144"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="10dp"
+                android:text="我的名称是什么" />
+
+        </com.sunny.androidstu.view.round_angle.RoundAngleRelativeLayout>
+
 
     </LinearLayout>
 
