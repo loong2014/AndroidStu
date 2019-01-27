@@ -1,29 +1,129 @@
+// 模块构建脚本
+
+/**
+ * 指定打包插件类型：
+ * com.android.application : App插件，打包成.apk文件
+ * com.android.library : Lib插件，打包成.aar文件
+ */
 apply plugin: 'com.android.application'
 
+/**
+ * 打包插件相关属性配置
+ */
 android {
+    // 编译时的Android版本
     compileSdkVersion 28
+    /**
+     * 默认配置， 其属性是buildType和productFlavors之和，
+     * 可在此设置属性的默认配置
+     */
     defaultConfig {
+
+        // buildTypes 相关
+
+        // productFlavors 相关
+
+        // 项目ID——通过getPackageName获取到的值
         applicationId "com.sunny.androidstu"
+
+        // 兼容的最小SDK版本
         minSdkVersion 15
+
+        // 目标SDK版本——此时项目的运行SDK版本
         targetSdkVersion 28
+
+        // 版本号
         versionCode 1
+
+        // 版本名称
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        /**
+         * 变体维度——顺序很重要，这里的维度是country和gender
+         * 以country为第一维度，gender为第二维度
+         */
+        flavorDimensions "country", "gender"
+// , "age"
+
     }
+    /**
+     * 配置构建类型，默认有debug和release两种，可自行增加
+     */
     buildTypes {
         release {
-            minifyEnabled false
+            // 是否执行代码混淆
+            minifyEnabled true
+
+            // 设置混淆文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            // 是否执行代码混淆
+            minifyEnabled false
+        }
     }
+
+    /**
+     * 变体配置
+     */
+    productFlavors {
+
+        // 第一维度——国家
+        cn {
+            dimension "country"
+        }
+
+        en {
+            dimension "country"
+
+        }
+
+        // 第二维度——性别
+        man {
+            dimension "gender"
+        }
+
+        woman {
+            dimension "gender"
+        }
+//
+//        // 第三维度——年龄
+//        child {
+//            dimension "age"
+//        }
+//        youth {
+//            dimension "age"
+//        }
+//        oldMan {
+//            dimension "age"
+//        }
+    }
+
+    /**
+     * 过滤变体
+     */
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+
+        // 过滤包含变体(性别为)man的渠道包
+        if (names.contains("man")) {
+            setIgnore(true)
+        }
+    }
+
 }
 
+/**
+ * 模块的依赖配置
+ */
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     implementation project(':baseLib')
 }

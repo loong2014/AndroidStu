@@ -1,0 +1,3 @@
+增加构建类型
+
+新增构建类型后，需要在所有相关module中build.gradle里的buildTypes里配置新的构建类型

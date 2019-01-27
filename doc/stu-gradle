@@ -1,0 +1,17 @@
+在 AS 中存在多个类型的gradle文件
+
+1. 工程目录下的 settings.gradle 文件——配置需要编译的 module
+2. 工程目录下的 build.gradle 文件——对所有module生效的全局gradle文件
+3. module下的 build.gradle 文件——对当前module生效的局部gradle文件
+
+全局 build.gradle 文件构建脚本解析：
+
+buildscript : 公共配置文件声明——所有子项目/模块
+
+allprojects :
+
+
+
+
+产考：
+https://blog.csdn.net/jiang877864109/article/details/80415693

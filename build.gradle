@@ -1,14 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+// 全局构建脚本
+
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
     }
+
+    // 项目工程的依赖配置
     dependencies {
+
+        // 声明项目工程所使用的gradle版本
         classpath 'com.android.tools.build:gradle:3.2.0'
-        
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

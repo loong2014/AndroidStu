@@ -1,0 +1,64 @@
+如何在AS 3.0之后使用多渠道打包
+
+
+// 添加渠道
+android{
+
+    // 默认配置
+    defaultConfig {
+        // 变体——打包的维度，按顺序划分
+        flavorDimensions "country" , "gender" , "age"
+    }
+
+    // 渠道类型
+    productFlavors {
+
+        // 第一维度——国家
+        cn {
+            dimension "country"
+        }
+
+        en {
+            dimension "country"
+        }
+
+        // 第二维度——性别
+        man {
+            dimension "gender"
+        }
+
+        woman {
+            dimension "gender"
+        }
+
+        // 第三维度——年龄
+        child {
+            dimension "age"
+        }
+        youth {
+            dimension "age"
+        }
+        oldMan {
+            dimension "age"
+        }
+    }
+
+    // 渠道过滤
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+
+        // 过滤在cn的man渠道
+        if (names.contains("cn") && names.contains("man") {
+            setIgnore(true)
+        }
+
+        // 过滤所有的年龄渠道
+        if (names.contains("child") && names.contains("man") {
+            setIgnore(true)
+        }
+    }
+}
+
+通过 gradlew build 会打出 2 * 2 * 3 (country * gender * age) 共12个包:
+cnManChild      cnManOldMan     cnManYouth      cnWomanChild    cnWomanOldMan   cnWomanYouth
+enManChild      enManOldMan     enManYouth      enWomanChild    enWomanOldMan   enWomanYouth
