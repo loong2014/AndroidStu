@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.sunny.androidstu.app_icon.AppIconManager;
 import com.sunny.androidstu.memory_leak.inner_class.MemoryLeakInnerClassActivity;
 import com.sunny.baselib.activity.BaseActivity;
 
@@ -15,19 +16,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.enter_memory_leak).setOnClickListener(this);
-        findViewById(R.id.rl2).setOnFocusChangeListener(this);
-        findViewById(R.id.rl1).setOnFocusChangeListener(this);
+        findViewById(R.id.other_btn).setOnClickListener(this);
 
 
     }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        if (hasFocus) {
-
-        } else {
-
-        }
     }
 
     @Override
@@ -36,8 +31,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.enter_memory_leak: {
                 Intent intent = new Intent(this, MemoryLeakInnerClassActivity.class);
                 startActivity(intent);
+                break;
             }
-            break;
+            case R.id.other_btn: {
+                AppIconManager.getInstance().autoUpdateIcon();
+                break;
+            }
+            default:
+                break;
         }
     }
 }

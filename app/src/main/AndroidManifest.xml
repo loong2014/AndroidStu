@@ -20,6 +20,53 @@
             </intent-filter>
         </activity>
 
+        <!-- activity的别名——在xml文件中，必须声明在目标activity声明之后
+        属性是activity的子集，拥有且覆盖目标activity中设置的属性
+
+        android:targetActivity="x.x.xxAct" : 目标Activity，即通过别名调起的Activity
+        android:enabled="true/false" : 默认true，目标Activity是否可以通过别名被系统实例化
+        android:exported="true/false" : 默认值：是否有intent-filter元素，是否可以被其它应用调起
+        android:icon="@mipmap/icon_1" : 别名对应的应用图标
+        android:label="icon_1" : 别名对应的应用名称
+        -->
+        <activity-alias
+            android:name="LauncherActivity1"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/icon_1"
+            android:label="icon_1"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="LauncherActivity2"
+            android:enabled="false"
+            android:icon="@mipmap/icon_2"
+            android:label="icon_2"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="LauncherActivity3"
+            android:enabled="false"
+            android:icon="@mipmap/icon_3"
+            android:label="icon_3"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
         <activity
             android:name=".memory_leak.inner_class.MemoryLeakInnerClassActivity"
             android:launchMode="singleTop" />
