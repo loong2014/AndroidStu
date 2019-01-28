@@ -82,7 +82,7 @@
 
         <!-- 视频播放 -->
         <activity
-            android:name=".player.VideoPlayerActivity"
+            android:name=".simple_danmaku.SimpleDanmakuPlayerActivity"
             android:launchMode="singleTop" />
 
     </application>

@@ -1,9 +1,9 @@
-package com.sunny.androidstu.player.danmaku;
+package com.sunny.androidstu.simple_danmaku;
 
 /**
  * Created by zhangxin17 on 2019/1/28
  */
-public class DanmakuInfo {
+public class SimpleDanmakuInfo {
 
     // 文字的内容+大小+颜色
     private String text;

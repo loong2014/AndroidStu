@@ -1,4 +1,4 @@
-package com.sunny.androidstu.player;
+package com.sunny.androidstu.simple_danmaku;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -9,8 +9,6 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.sunny.androidstu.R;
-import com.sunny.androidstu.player.danmaku.DanmakuHelper;
-import com.sunny.androidstu.player.danmaku.DanmakuSurfaceView;
 import com.sunny.baselib.activity.BaseActivity;
 
 import java.lang.ref.WeakReference;
@@ -19,7 +17,7 @@ import java.lang.ref.WeakReference;
  * Created by zhangxin17 on 2019/1/28
  * 视频播放
  */
-public class VideoPlayerActivity extends BaseActivity {
+public class SimpleDanmakuPlayerActivity extends BaseActivity {
 
     private static final int MSG_VIDEO_START = 1;
     private static final int MSG_DANMAKU_START = 2;
@@ -33,21 +31,21 @@ public class VideoPlayerActivity extends BaseActivity {
 
 
     //
-    private DanmakuHelper mDanmakuHelper;
+    private SimpleDanmakuHelper mDanmakuHelper;
 
     private VideoHandler mVideoHandler;
 
     private static class VideoHandler extends Handler {
 
-        private WeakReference<VideoPlayerActivity> actWeakReference;
+        private WeakReference<SimpleDanmakuPlayerActivity> actWeakReference;
 
-        VideoHandler(VideoPlayerActivity activity) {
+        VideoHandler(SimpleDanmakuPlayerActivity activity) {
             actWeakReference = new WeakReference<>(activity);
         }
 
         @Override
         public void handleMessage(Message msg) {
-            VideoPlayerActivity activity = actWeakReference.get();
+            SimpleDanmakuPlayerActivity activity = actWeakReference.get();
             if (activity == null) {
                 return;
             }
@@ -72,7 +70,7 @@ public class VideoPlayerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_video_player);
+        setContentView(R.layout.act_simple_danmaku_player);
         mVideoHandler = new VideoHandler(this);
         initVideoView();
 
@@ -82,15 +80,15 @@ public class VideoPlayerActivity extends BaseActivity {
     }
 
     private void initDanmakuView() {
-        DanmakuSurfaceView danmakuSurfaceView = findViewById(R.id.danmaku_view);
+        SimpleDanmakuSurfaceView danmakuSurfaceView = findViewById(R.id.danmaku_view);
 
-        mDanmakuHelper = new DanmakuHelper(mDanmakuCallback);
+        mDanmakuHelper = new SimpleDanmakuHelper(mDanmakuCallback);
         mDanmakuHelper.setDanmakuSurfaceView(danmakuSurfaceView);
 
         mDanmakuHelper.doFetchDanmakuInfo();
     }
 
-    private DanmakuHelper.DanmakuCallback mDanmakuCallback = new DanmakuHelper.DanmakuCallback() {
+    private SimpleDanmakuHelper.DanmakuCallback mDanmakuCallback = new SimpleDanmakuHelper.DanmakuCallback() {
         @Override
         public void onDanmakuInfoReady() {
         }

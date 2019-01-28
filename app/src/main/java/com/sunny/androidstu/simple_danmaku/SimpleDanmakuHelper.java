@@ -1,4 +1,4 @@
-package com.sunny.androidstu.player.danmaku;
+package com.sunny.androidstu.simple_danmaku;
 
 import com.sunny.baselib.MStringUtils;
 import com.sunny.baselib.log.MLog;
@@ -9,15 +9,15 @@ import java.util.Random;
 /**
  * Created by zhangxin17 on 2019/1/28
  */
-public class DanmakuHelper {
-    private static final String TAG = MLogTag.DANMAKU + "DanmakuHelper";
+public class SimpleDanmakuHelper {
+    private static final String TAG = MLogTag.DANMAKU + "SimpleDanmakuHelper";
 
     private final DanmakuCallback mDanmakuCallback;
-    private DanmakuSurfaceView mDanmakuSurfaceView;
+    private SimpleDanmakuSurfaceView mDanmakuSurfaceView;
 
     private boolean isFetching = false;
 
-    public DanmakuHelper(DanmakuCallback callback) {
+    public SimpleDanmakuHelper(DanmakuCallback callback) {
         mDanmakuCallback = callback;
     }
 
@@ -52,11 +52,11 @@ public class DanmakuHelper {
 
                 Random random = new Random();
 
-                DanmakuInfo info;
+                SimpleDanmakuInfo info;
                 while (isFetching) {
-                    DanmakuSurfaceView view = getDanmakuSurfaceView();
+                    SimpleDanmakuSurfaceView view = getDanmakuSurfaceView();
                     if (view != null && view.isReady()) {
-                        info = new DanmakuInfo();
+                        info = new SimpleDanmakuInfo();
                         info.setText(MStringUtils.getRandomStr());
                         info.setColor(MStringUtils.getRandomColor());
                         info.setSize(40);
@@ -91,11 +91,11 @@ public class DanmakuHelper {
         getDanmakuSurfaceView().stopShowing();
     }
 
-    public void setDanmakuSurfaceView(DanmakuSurfaceView view) {
+    public void setDanmakuSurfaceView(SimpleDanmakuSurfaceView view) {
         this.mDanmakuSurfaceView = view;
     }
 
-    public DanmakuSurfaceView getDanmakuSurfaceView() {
+    public SimpleDanmakuSurfaceView getDanmakuSurfaceView() {
         return mDanmakuSurfaceView;
     }
 

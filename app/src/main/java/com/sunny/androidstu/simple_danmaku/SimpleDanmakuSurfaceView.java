@@ -1,4 +1,4 @@
-package com.sunny.androidstu.player.danmaku;
+package com.sunny.androidstu.simple_danmaku;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -20,26 +20,26 @@ import java.util.List;
  * Created by zhangxin17 on 2019/1/28
  * 弹幕显示控件
  */
-public class DanmakuSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
+public class SimpleDanmakuSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
 
     private static final String TAG = MLogTag.DANMAKU + "DanmakuSurfaceView";
 
     private SurfaceHolder mSurfaceHolder;
 
-    private List<DanmakuInfo> mDanmakuInfoList = new ArrayList<>();
+    private List<SimpleDanmakuInfo> mDanmakuInfoList = new ArrayList<>();
 
     private boolean isReady = false; // 是否准备好了
     private boolean isRunning = false; // 是否开始运行
 
-    public DanmakuSurfaceView(Context context) {
+    public SimpleDanmakuSurfaceView(Context context) {
         this(context, null);
     }
 
-    public DanmakuSurfaceView(Context context, AttributeSet attrs) {
+    public SimpleDanmakuSurfaceView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public DanmakuSurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SimpleDanmakuSurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }
@@ -57,7 +57,7 @@ public class DanmakuSurfaceView extends SurfaceView implements SurfaceHolder.Cal
         return isReady;
     }
 
-    public void addDanmakuInfo(DanmakuInfo info) {
+    public void addDanmakuInfo(SimpleDanmakuInfo info) {
         mDanmakuInfoList.add(info);
     }
 
@@ -94,7 +94,7 @@ public class DanmakuSurfaceView extends SurfaceView implements SurfaceHolder.Cal
 
                 // 弹幕绘制
                 Canvas canvas = null;
-                DanmakuInfo info = null;
+                SimpleDanmakuInfo info = null;
                 Paint paint = null;
 
                 MLog.d(TAG, "doRefreshCanvas  isReady :" + isReady + " , isRunning :" + isRunning);
