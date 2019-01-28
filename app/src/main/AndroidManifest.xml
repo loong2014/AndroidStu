@@ -80,11 +80,15 @@
             android:name=".memory_leak.inner_class.MemoryLeakInnerClassActivity"
             android:launchMode="singleTop" />
 
-        <!-- 视频播放 -->
+        <!-- 弹幕-简单 -->
         <activity
             android:name=".simple_danmaku.SimpleDanmakuPlayerActivity"
             android:launchMode="singleTop" />
 
+        <!-- 弹幕-bilibili -->
+        <activity
+            android:name=".bilibili_danmaku.BiliDanmakuPlayerActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

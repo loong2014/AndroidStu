@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.sunny.androidstu.app_icon.AppIconManager;
+import com.sunny.androidstu.bilibili_danmaku.BiliDanmakuPlayerActivity;
 import com.sunny.androidstu.memory_leak.inner_class.MemoryLeakInnerClassActivity;
-import com.sunny.androidstu.simple_danmaku.SimpleDanmakuPlayerActivity;
 import com.sunny.baselib.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
@@ -19,7 +19,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         findViewById(R.id.enter_memory_leak).setOnClickListener(this);
         findViewById(R.id.other_btn).setOnClickListener(this);
         findViewById(R.id.enter_video_player).setOnClickListener(this);
-
 
     }
 
@@ -39,7 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             }
             case R.id.enter_video_player: {
-                startActivity(new Intent(this, SimpleDanmakuPlayerActivity.class));
+                startActivity(new Intent(this, BiliDanmakuPlayerActivity.class));
 
                 break;
             }
