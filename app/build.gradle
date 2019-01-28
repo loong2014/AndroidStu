@@ -44,8 +44,8 @@ android {
          * 变体维度——顺序很重要，这里的维度是country和gender
          * 以country为第一维度，gender为第二维度
          */
-        flavorDimensions "country", "gender"
-// , "age"
+//        flavorDimensions "country", "gender", "age"
+        flavorDimensions "defalut"
 
     }
     /**
@@ -70,25 +70,28 @@ android {
      * 变体配置
      */
     productFlavors {
-
-        // 第一维度——国家
-        cn {
-            dimension "country"
+        stu {
+            dimension "defalut"
         }
 
-        en {
-            dimension "country"
+//        // 第一维度——国家
+//        cn {
+//            dimension "country"
+//        }
+//
+//        en {
+//            dimension "country"
+//
+//        }
 
-        }
-
-        // 第二维度——性别
-        man {
-            dimension "gender"
-        }
-
-        woman {
-            dimension "gender"
-        }
+//        // 第二维度——性别
+//        man {
+//            dimension "gender"
+//        }
+//
+//        woman {
+//            dimension "gender"
+//        }
 //
 //        // 第三维度——年龄
 //        child {
