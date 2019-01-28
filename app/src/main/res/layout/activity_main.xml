@@ -20,13 +20,20 @@
             android:id="@+id/enter_memory_leak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="进内存泄漏" />
+            android:text="内存泄漏" />
 
         <Button
             android:id="@+id/other_btn"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="其它" />
+        <Button
+            android:id="@+id/enter_video_player"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频播放" />
 
     </LinearLayout>
 

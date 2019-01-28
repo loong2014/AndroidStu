@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-## clean
-../gradlew clean
-
-## compile and generate
-../gradlew build

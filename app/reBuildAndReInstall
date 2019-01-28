@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+## clean
+../gradlew clean
+
+## compile and generate
+../gradlew build
+
+## uninstall
+adb uninstall com.sunny.androidstu
+
+## install
+cd ./build/outputs/apk/stu/debug
+
+adb install -r app-stu-debug.apk
+
+## start up
+adb shell am start -n com.sunny.androidstu/com.sunny.androidstu.MainActivity

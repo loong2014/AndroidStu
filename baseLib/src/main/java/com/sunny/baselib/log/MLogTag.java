@@ -5,6 +5,7 @@ package com.sunny.baselib.log;
  * 日志TAG配置
  */
 public class MLogTag {
-    public static final String VIEW = "wheelView-";
     public static final String ACT_LIFE_CYCLE_TAG = "ActLifeCycle-";
+    public static final String VIEW = "wheelView-";
+    public static final String DANMAKU = "danmaku-";
 }

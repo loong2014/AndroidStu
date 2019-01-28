@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.sunny.androidstu.app_icon.AppIconManager;
 import com.sunny.androidstu.memory_leak.inner_class.MemoryLeakInnerClassActivity;
+import com.sunny.androidstu.player.VideoPlayerActivity;
 import com.sunny.baselib.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
@@ -17,6 +18,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         findViewById(R.id.enter_memory_leak).setOnClickListener(this);
         findViewById(R.id.other_btn).setOnClickListener(this);
+        findViewById(R.id.enter_video_player).setOnClickListener(this);
 
 
     }
@@ -29,12 +31,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.enter_memory_leak: {
-                Intent intent = new Intent(this, MemoryLeakInnerClassActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, MemoryLeakInnerClassActivity.class));
                 break;
             }
             case R.id.other_btn: {
                 AppIconManager.getInstance().autoUpdateIcon();
+                break;
+            }
+            case R.id.enter_video_player: {
+                startActivity(new Intent(this, VideoPlayerActivity.class));
+
                 break;
             }
             default:
