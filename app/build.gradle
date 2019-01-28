@@ -106,12 +106,12 @@ android {
      * 过滤变体
      */
     variantFilter { variant ->
-        def names = variant.flavors*.name
-
-        // 过滤包含变体(性别为)man的渠道包
-        if (names.contains("man")) {
-            setIgnore(true)
-        }
+//        def names = variant.flavors*.name
+//
+//        // 过滤包含变体(性别为)man的渠道包
+//        if (names.contains("man")) {
+//            setIgnore(true)
+//        }
     }
 
 }
