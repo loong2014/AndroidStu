@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +34,17 @@
             android:layout_height="wrap_content"
             android:text="视频播放" />
 
+        <com.sunny.androidstu.view.DemoRelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="100dp">
+
+
+        <com.sunny.androidstu.view.DemoTextView
+            android:id="@+id/demo_tx"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </com.sunny.androidstu.view.DemoRelativeLayout>
     </LinearLayout>
 
 

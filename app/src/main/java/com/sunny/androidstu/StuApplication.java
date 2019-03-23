@@ -1,5 +1,9 @@
 package com.sunny.androidstu;
 
+import android.content.Intent;
+import android.content.IntentFilter;
+
+import com.sunny.androidstu.receiver.DemoReceiver;
 import com.sunny.baselib.applicatin.BaseApplication;
 
 /**
@@ -7,4 +11,21 @@ import com.sunny.baselib.applicatin.BaseApplication;
  */
 public class StuApplication extends BaseApplication {
 
+    private static DemoReceiver demoReceiver;
+    private static IntentFilter intentFilter;
+
+    public static DemoReceiver getDemoReceiver() {
+        if (demoReceiver == null) {
+            demoReceiver = new DemoReceiver();
+        }
+        return demoReceiver;
+    }
+
+    public static IntentFilter getDemoIntentFliter(){
+        if (intentFilter ==null){
+            intentFilter = new IntentFilter();
+            intentFilter.addAction(Intent.ACTION_SCREEN_ON);
+        }
+        return intentFilter;
+    }
 }

@@ -8,4 +8,5 @@ public class MLogTag {
     public static final String ACT_LIFE_CYCLE_TAG = "ActLifeCycle-";
     public static final String VIEW = "wheelView-";
     public static final String DANMAKU = "danmaku-";
+    public static final String CDE = "cde-";
 }

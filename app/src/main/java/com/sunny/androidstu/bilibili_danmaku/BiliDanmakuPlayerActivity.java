@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.VideoView;
 
 import com.sunny.androidstu.R;
+import com.sunny.androidstu.StuApplication;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,7 +55,12 @@ import master.flame.danmaku.danmaku.util.SystemClock;
 
 public class BiliDanmakuPlayerActivity extends Activity implements View.OnClickListener {
 
-    private static final Uri videoUri = Uri.parse("http://flashmedia.eastday.com/newdate/news/2016-11/shznews1125-19.mp4");
+//    private static final Uri videoUri = Uri.parse("http://flashmedia.eastday.com/newdate/news/2016-11/shznews1125-19.mp4");
+
+
+    private static final Uri videoUri = Uri.parse("http://127.0.0.1:6992/play/slices/9.ts?id=d7c651a192b9b1c234a880107ddaa1a6&segment=9");
+
+
 
     private IDanmakuView mDanmakuView;
 
@@ -157,6 +163,8 @@ public class BiliDanmakuPlayerActivity extends Activity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_bilibili_danmaku_player);
         findViews();
+        registerReceiver(StuApplication.getDemoReceiver(),StuApplication.getDemoIntentFliter());
+
     }
 
     private BaseDanmakuParser createParser(InputStream stream) {

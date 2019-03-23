@@ -89,6 +89,7 @@
         <activity
             android:name=".bilibili_danmaku.BiliDanmakuPlayerActivity"
             android:launchMode="singleTop" />
+
     </application>
 
 </manifest>
