@@ -9,4 +9,5 @@ public class MLogTag {
     public static final String VIEW = "wheelView-";
     public static final String DANMAKU = "danmaku-";
     public static final String CDE = "cde-";
+    public static final String TAG_FRESCO = "fresco-";
 }

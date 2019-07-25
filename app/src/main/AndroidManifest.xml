@@ -90,6 +90,14 @@
             android:name=".bilibili_danmaku.BiliDanmakuPlayerActivity"
             android:launchMode="singleTop" />
 
+        <!-- 本地播放 -->
+        <activity android:name=".localVideo.LocalVideoActivity" />
+
+        <!-- fresco 加载库 -->
+        <activity android:name=".fresco.FrescoActivity" />
+
+        <!-- 小窗变化 -->
+        <activity android:name=".resize.SmallPlayerWindowChangedActivity" />
     </application>
 
 </manifest>
