@@ -1,14 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
-        google()
-        mavenCentral()
-        maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
-        maven { setUrl("https://jitpack.io") }
+//        google()
+//        maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
         maven { setUrl("https://maven.aliyun.com/repository/public") }
         maven { setUrl("https://maven.aliyun.com/repository/google") }
         maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
-
+        maven { setUrl("https://jitpack.io") }
+        mavenCentral()
     }
 
     dependencies {
@@ -21,13 +20,13 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        mavenCentral()
-        maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
-        maven { setUrl("https://jitpack.io") }
+//        google()
+//        maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
         maven { setUrl("https://maven.aliyun.com/repository/public") }
         maven { setUrl("https://maven.aliyun.com/repository/google") }
         maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { setUrl("https://jitpack.io") }
+        mavenCentral()
     }
 }
 
