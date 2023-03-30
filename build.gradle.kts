@@ -5,6 +5,10 @@ buildscript {
         mavenCentral()
         maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
         maven { setUrl("https://jitpack.io") }
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
+        maven { setUrl("https://maven.aliyun.com/repository/google") }
+        maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
+
     }
 
     dependencies {
@@ -21,6 +25,9 @@ allprojects {
         mavenCentral()
         maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
         maven { setUrl("https://jitpack.io") }
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
+        maven { setUrl("https://maven.aliyun.com/repository/google") }
+        maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
     }
 }
 
